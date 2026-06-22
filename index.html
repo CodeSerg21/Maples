@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maples Beauty &amp; Education — Lash &amp; Brow Studio, Hebburn</title>
+<meta name="description" content="Master lash technician &amp; qualified educator in Hebburn, Tyne and Wear. Lash extensions, lifts, brows, facials &amp; more. Rated 5.0 from 325+ reviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Yellowtail&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fdf6f5;
+    --cream-deep:#f6e2e0;
+    --ink:#161213;
+    --ink-soft:#6e5d5c;
+    --forest:#161213;
+    --forest-light:#8a5957;
+    --clay:#c97470;
+    --clay-light:#f0bcb9;
+    --line: rgba(22,18,19,0.13);
+    --paper: #ffffff;
+    --font-display:'Fraunces', serif;
+    --font-script:'Yellowtail', cursive;
+    --font-body:'Hanken Grotesk', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--clay);color:var(--paper);}
+
+  /* ---------- noise/texture ---------- */
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.035;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 0;transition:padding .35s ease, background .35s ease, box-shadow .35s ease;
+  }
+  header.scrolled{
+    padding:14px 0;background:rgba(246,241,232,0.86);backdrop-filter:blur(14px);
+    box-shadow:0 1px 0 var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;}
+  .logo img{height:48px;width:auto;object-fit:contain;flex-shrink:0;}
+  .logo.on-dark img{background:var(--paper);padding:8px 14px;border-radius:10px;}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{
+    font-size:.86rem;font-weight:500;letter-spacing:.01em;color:var(--ink);
+    position:relative;padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--clay);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-body);font-weight:600;font-size:.84rem;letter-spacing:.02em;
+    padding:13px 26px;border-radius:2px;border:1px solid transparent;cursor:pointer;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .btn-primary{background:var(--forest);color:var(--paper);}
+  .btn-primary:hover{background:var(--clay);transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--clay);color:var(--clay);transform:translateY(-2px);}
+  .menu-toggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--forest);cursor:pointer;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:160px 0 90px;overflow:hidden;text-align:center;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;}
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 38%, rgba(22,18,19,.18), rgba(22,18,19,.62) 62%),
+      linear-gradient(180deg, rgba(22,18,19,.55) 0%, rgba(22,18,19,.4) 40%, rgba(22,18,19,.78) 100%);
+  }
+  .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%;}
+  .hero-logo-card{
+    background:rgba(253,246,245,.92);backdrop-filter:blur(6px);
+    border-radius:50%;width:230px;height:230px;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 30px 60px -16px rgba(0,0,0,.45);margin-bottom:36px;
+  }
+  .hero-logo-card img{width:160px;height:auto;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--clay-light);margin-bottom:18px;
+  }
+  .eyebrow::before, .eyebrow::after{content:'';width:26px;height:1px;background:var(--clay-light);}
+  h1{
+    font-family:var(--font-display);font-weight:400;font-size:clamp(2.7rem, 5.4vw, 4.6rem);
+    line-height:1.04;letter-spacing:-.01em;color:var(--paper);
+  }
+  h1 em{font-style:italic;font-weight:500;color:var(--clay-light);}
+  .hero p.lede{
+    margin-top:22px;font-size:1.1rem;line-height:1.65;color:rgba(253,246,245,.86);max-width:520px;
+  }
+  .hero-cta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;justify-content:center;}
+  .hero .btn-ghost{border-color:rgba(253,246,245,.6);color:var(--paper);}
+  .hero .btn-ghost:hover{border-color:var(--clay-light);color:var(--clay-light);}
+  .stat-row{display:flex;gap:34px;margin-top:50px;flex-wrap:wrap;justify-content:center;}
+  .stat-row div{display:flex;flex-direction:column;align-items:center;}
+  .stat-num{font-family:var(--font-display);font-size:1.7rem;color:var(--clay-light);font-weight:500;}
+  .stat-label{font-size:.74rem;color:rgba(253,246,245,.7);letter-spacing:.03em;margin-top:2px;}
+
+  /* ---------- section shared ---------- */
+  section{padding:120px 0;position:relative;}
+  .tag{
+    display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin-bottom:18px;
+  }
+  .tag::before{content:'';width:26px;height:1px;background:var(--clay);}
+  h2{
+    font-family:var(--font-display);font-weight:400;font-size:clamp(2.1rem,3.6vw,3.1rem);
+    line-height:1.1;letter-spacing:-.01em;
+  }
+  h2 em{font-style:italic;color:var(--forest);font-weight:500;}
+  .section-head{max-width:640px;margin-bottom:64px;}
+  .section-head p{margin-top:18px;color:var(--ink-soft);font-size:1.05rem;line-height:1.6;}
+
+  /* ---------- about ---------- */
+  .about{background:var(--paper);}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:center;}
+  .about-imgs{position:relative;height:520px;}
+  .about-imgs img{
+    position:absolute;border-radius:3px;object-fit:cover;box-shadow:0 24px 50px -18px rgba(34,29,24,.3);
+  }
+  .about-imgs .img-a{width:72%;height:78%;top:0;left:0;z-index:2;}
+  .about-imgs .img-b{width:56%;height:46%;bottom:0;right:0;z-index:3;border:6px solid var(--paper);}
+  .about ul.facts{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;}
+  .about ul.facts li{
+    font-size:.92rem;color:var(--ink);padding-left:22px;position:relative;line-height:1.5;
+  }
+  .about ul.facts li::before{
+    content:'✓';position:absolute;left:0;top:0;color:var(--clay);font-size:.8rem;font-weight:700;
+  }
+
+  /* ---------- services ---------- */
+  .services{background:var(--cream-deep);}
+  .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .service-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:34px 32px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .service-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(34,29,24,.22);}
+  .service-card .row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;}
+  .service-card h3{font-family:var(--font-display);font-weight:500;font-size:1.3rem;}
+  .service-card .price{font-family:var(--font-display);font-size:1.3rem;color:var(--clay);white-space:nowrap;}
+  .service-card .meta{font-size:.78rem;color:var(--ink-soft);margin-top:6px;letter-spacing:.02em;text-transform:uppercase;}
+  .also-row{
+    margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;
+  }
+  .also-row span.lbl{font-size:.8rem;font-weight:600;color:var(--ink-soft);letter-spacing:.04em;text-transform:uppercase;margin-right:8px;}
+  .pill{
+    border:1px solid var(--line);padding:9px 18px;border-radius:30px;font-size:.84rem;
+    background:var(--paper);color:var(--ink);
+  }
+
+  /* ---------- gallery ---------- */
+  .gallery{background:var(--paper);}
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:14px;
+  }
+  .gallery-grid a{
+    position:relative;overflow:hidden;border-radius:3px;display:block;
+  }
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1);}
+  .gallery-grid a:hover img{transform:scale(1.08);}
+  .gallery-grid a::after{
+    content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%, rgba(34,29,24,.45));
+    opacity:0;transition:opacity .35s ease;
+  }
+  .gallery-grid a:hover::after{opacity:1;}
+  .g1{grid-column:span 2;grid-row:span 2;}
+  .g2{grid-column:span 1;grid-row:span 1;}
+  .g3{grid-column:span 1;grid-row:span 2;}
+  .g4{grid-column:span 1;grid-row:span 1;}
+  .g5{grid-column:span 1;grid-row:span 1;}
+  .g6{grid-column:span 1;grid-row:span 1;}
+  .g7{grid-column:span 2;grid-row:span 1;}
+  .g8{grid-column:span 1;grid-row:span 1;}
+
+  /* ---------- trust ---------- */
+  .trust{background:var(--forest);color:var(--cream);}
+  .trust .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .trust .tag{color:var(--clay-light);}
+  .trust h2{color:var(--paper);}
+  .trust p.lede{color:rgba(246,241,232,.78);margin-top:20px;font-size:1.05rem;line-height:1.65;max-width:460px;}
+  .trust-stats{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .trust-stat{border:1px solid rgba(246,241,232,.18);padding:30px 26px;border-radius:3px;}
+  .trust-stat .num{font-family:var(--font-display);font-size:2.4rem;color:var(--clay-light);}
+  .trust-stat .lbl{font-size:.8rem;color:rgba(246,241,232,.65);margin-top:6px;letter-spacing:.02em;}
+  .trust a.btn{margin-top:34px;}
+
+  /* ---------- visit ---------- */
+  .visit{background:var(--cream-deep);}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+  .info-block{margin-bottom:30px;}
+  .info-block h4{
+    font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:10px;
+  }
+  .info-block p, .info-block a{font-size:1.02rem;color:var(--ink);line-height:1.6;}
+  table.hours{width:100%;border-collapse:collapse;margin-top:4px;}
+  table.hours td{padding:9px 0;border-bottom:1px solid var(--line);font-size:.94rem;}
+  table.hours td:last-child{text-align:right;color:var(--ink-soft);}
+  .map-frame{border-radius:3px;overflow:hidden;border:1px solid var(--line);height:100%;min-height:380px;}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;filter:saturate(.85) contrast(1.02);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--forest);color:rgba(246,241,232,.7);padding:64px 0 32px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;border-bottom:1px solid rgba(246,241,232,.14);padding-bottom:40px;margin-bottom:28px;}
+  .footer-top .logo{color:var(--cream);}
+  .footer-top .logo span{color:var(--clay-light);}
+  .footer-links{display:flex;gap:40px;flex-wrap:wrap;}
+  .footer-links h5{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,232,.45);margin-bottom:14px;}
+  .footer-links a, .footer-links p{display:block;font-size:.9rem;margin-bottom:9px;color:rgba(246,241,232,.82);}
+  .footer-links a:hover{color:var(--clay-light);}
+  .social-row{display:flex;gap:14px;margin-top:14px;}
+  .social-row a{
+    width:38px;height:38px;border:1px solid rgba(246,241,232,.25);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:all .25s ease;
+  }
+  .social-row a:hover{background:var(--clay);border-color:var(--clay);color:var(--forest);}
+  .footer-bottom{display:flex;justify-content:space-between;font-size:.78rem;color:rgba(246,241,232,.45);flex-wrap:wrap;gap:10px;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .about-grid, .trust .wrap, .visit-grid{grid-template-columns:1fr;}
+    .about-imgs{height:380px;margin-bottom:20px;}
+    .service-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
+    .g1,.g7{grid-column:span 2;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 20px;}
+    section{padding:80px 0;}
+    .stat-row{gap:24px;}
+    .hero-logo-card{width:170px;height:170px;}
+    .hero-logo-card img{width:120px;}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header id="header">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo on-dark"><img src="images/logo-icon.png" alt="Maples Beauty &amp; Education logo"></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" class="btn btn-primary">Book Now</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="images/edit-01.jpg" alt="Close up lash extension set by Maples Beauty &amp; Education, Hebburn"></div>
+  <div class="wrap hero-content">
+    <div class="hero-logo-card reveal"><img src="images/logo-icon.png" alt="Maples Beauty &amp; Education"></div>
+    <div class="eyebrow">Hebburn · Tyne &amp; Wear</div>
+    <h1>Lashes &amp; brows,<br><em>made to last.</em></h1>
+    <p class="lede">A home studio in Hebburn run by Faye — master lash technician with 9+ years behind the tweezers and a qualification to teach others. Lash extensions, lifts, brows, facials and skin treatments — all done properly, never rushed.</p>
+    <div class="hero-cta">
+      <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" class="btn btn-primary">Book an appointment</a>
+      <a href="#services" class="btn btn-ghost">View services</a>
+    </div>
+    <div class="stat-row">
+      <div><span class="stat-num">5.0★</span><span class="stat-label">325+ reviews</span></div>
+      <div><span class="stat-num">9 yrs</span><span class="stat-label">full-time lashing</span></div>
+      <div><span class="stat-num">100%</span><span class="stat-label">qualified educator</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-imgs reveal">
+        <img class="img-a" src="images/edit-03.jpg" alt="Eyelash extension detail, Maples Beauty Hebburn">
+        <img class="img-b" src="images/edit-08.jpg" alt="Brow and lash close up, Maples Beauty Hebburn">
+      </div>
+      <div class="reveal">
+        <div class="tag">Meet your technician</div>
+        <h2>Hi, I'm <em>Faye.</em></h2>
+        <p style="margin-top:22px;color:var(--ink-soft);font-size:1.05rem;line-height:1.7;max-width:480px;">
+          Master lash technician, with over 9 years of lashing full time. I run Maples Beauty &amp; Education from my home studio on Saint Close, Hebburn — and I'm also a qualified educator, so every set is done the way I'd teach it: unrushed, precise, and built to last. Open five days a week, with late slots on Tuesdays and Wednesdays for anyone who can't get away during the day.
+        </p>
+        <ul class="facts">
+          <li>Master eyelash technician, 9+ years</li>
+          <li>Qualified beauty educator</li>
+          <li>Woman-owned, home studio</li>
+          <li>LGBTQ+ friendly &amp; inclusive</li>
+          <li>Vegan-friendly products</li>
+          <li>On-street parking available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="tag">Treatments</div>
+      <h2>Lash &amp; brow <em>menu</em></h2>
+      <p>The core lash and brow treatments, priced and timed exactly as booked on Fresha. Full treatment list and live availability always up to date there.</p>
+    </div>
+    <div class="service-grid reveal">
+      <div class="service-card">
+        <div class="row"><h3>Classic Infill</h3><span class="price">£30</span></div>
+        <div class="meta">1 hour</div>
+      </div>
+      <div class="service-card">
+        <div class="row"><h3>Hybrid Infill</h3><span class="price">£33.50</span></div>
+        <div class="meta">1 hour</div>
+      </div>
+      <div class="service-card">
+        <div class="row"><h3>Hybrid Full Set</h3><span class="price">£52.50</span></div>
+        <div class="meta">1 hour 30</div>
+      </div>
+      <div class="service-card">
+        <div class="row"><h3>Korean Lash Lift &amp; Tint</h3><span class="price">£42.50</span></div>
+        <div class="meta">1 hour</div>
+      </div>
+    </div>
+    <div class="also-row reveal">
+      <span class="lbl">Also available:</span>
+      <span class="pill">Facials</span>
+      <span class="pill">Dermaplaning</span>
+      <span class="pill">Fat Dissolve</span>
+      <span class="pill">Skin Boosters</span>
+      <span class="pill">Brow Lamination &amp; Tint</span>
+      <span class="pill">Body Waxing</span>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="tag">Recent work</div>
+      <h2>From the <em>studio</em></h2>
+      <p>A look at the lash sets, lifts and brow work coming out of the Hebburn studio.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <a class="g1" href="images/edit-01.jpg" target="_blank"><img src="images/edit-01.jpg" loading="lazy" alt="Lash extension set, close up"></a>
+      <a class="g2" href="images/edit-02.jpg" target="_blank"><img src="images/edit-02.jpg" loading="lazy" alt="Lash work detail"></a>
+      <a class="g3" href="images/edit-03.jpg" target="_blank"><img src="images/edit-03.jpg" loading="lazy" alt="Brow and lash close up"></a>
+      <a class="g4" href="images/edit-04.jpg" target="_blank"><img src="images/edit-04.jpg" loading="lazy" alt="Lash lift result"></a>
+      <a class="g5" href="images/edit-05.jpg" target="_blank"><img src="images/edit-05.jpg" loading="lazy" alt="Eyelash extensions side profile"></a>
+      <a class="g6" href="images/edit-06.jpg" target="_blank"><img src="images/edit-06.jpg" loading="lazy" alt="Client portrait after lash treatment"></a>
+      <a class="g7" href="images/edit-07.jpg" target="_blank"><img src="images/edit-07.jpg" loading="lazy" alt="Full lash set close up"></a>
+      <a class="g8" href="images/edit-08.jpg" target="_blank"><img src="images/edit-08.jpg" loading="lazy" alt="Brow tint and lash detail"></a>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="tag">Why Hebburn trusts Maples</div>
+      <h2>Five years of<br>five-star bookings.</h2>
+      <p class="lede">Every appointment is booked, confirmed and reviewed through Fresha — so the rating below is verified, not curated. No filtered photos, no fake reviews, just the same studio every time.</p>
+      <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" class="btn" style="background:var(--clay);color:var(--forest);">See verified reviews on Fresha</a>
+    </div>
+    <div class="trust-stats reveal">
+      <div class="trust-stat"><div class="num">5.0</div><div class="lbl">Average rating</div></div>
+      <div class="trust-stat"><div class="num">325+</div><div class="lbl">Verified reviews</div></div>
+      <div class="trust-stat"><div class="num">9</div><div class="lbl">Years lashing full-time</div></div>
+      <div class="trust-stat"><div class="num">5</div><div class="lbl">Days a week, open</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div class="reveal">
+      <div class="tag">Find the studio</div>
+      <h2>Visit <em>Hebburn.</em></h2>
+      <div class="info-block" style="margin-top:34px;">
+        <h4>Address</h4>
+        <p>4 Saint Close, Hebburn<br>Tyne and Wear, NE31 2BG</p>
+      </div>
+      <div class="info-block">
+        <h4>Contact Faye</h4>
+        <a href="tel:+447548296486">07548 296486</a>
+      </div>
+      <div class="info-block">
+        <h4>Opening hours</h4>
+        <table class="hours">
+          <tr><td>Monday</td><td>10:00 — 17:00</td></tr>
+          <tr><td>Tuesday</td><td>10:00 — 20:00</td></tr>
+          <tr><td>Wednesday</td><td>10:00 — 20:00</td></tr>
+          <tr><td>Thursday</td><td>10:00 — 16:00</td></tr>
+          <tr><td>Friday</td><td>10:00 — 14:00</td></tr>
+          <tr><td>Saturday — Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:10px;">Book an appointment</a>
+    </div>
+    <div class="map-frame reveal">
+      <iframe src="https://maps.google.com/maps?q=4+Saint+Close,+Hebburn,+NE31+2BG&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#top" class="logo on-dark"><img src="images/logo-icon.png" alt="Maples Beauty &amp; Education logo"></a>
+        <p style="margin-top:16px;max-width:280px;font-size:.9rem;line-height:1.6;">A home lash &amp; brow studio in Hebburn, Tyne and Wear, run by Faye. Booking handled entirely through Fresha.</p>
+        <div class="social-row">
+          <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" aria-label="Fresha">F</a>
+          <a href="https://www.facebook.com/people/Maples-Beauty-Education/61568768131959/" target="_blank" rel="noopener" aria-label="Facebook" style="font-size:.72rem;font-weight:700;">FB</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h5>Studio</h5>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+        </div>
+        <div>
+          <h5>Visit</h5>
+          <p>4 Saint Close</p>
+          <p>Hebburn, NE31 2BG</p>
+          <a href="tel:+447548296486">+44 7548 296486</a>
+        </div>
+        <div>
+          <h5>Hours</h5>
+          <p>Mon 10–5 · Tue–Wed 10–8</p>
+          <p>Thu 10–4 · Fri 10–2</p>
+          <p>Sat–Sun Closed</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Maples Beauty &amp; Education, Hebburn.</span>
+      <span>Bookings via Fresha.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.15 });
+  reveals.forEach(r => obs.observe(r));
+
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '64px';
+    navLinks.style.right = '24px';
+    navLinks.style.background = '#fffcf6';
+    navLinks.style.padding = '20px 28px';
+    navLinks.style.borderRadius = '4px';
+    navLinks.style.boxShadow = '0 18px 40px -10px rgba(34,29,24,.25)';
+    navLinks.style.gap = '16px';
+  });
+</script>
+</body>
+</html>
