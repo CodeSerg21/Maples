@@ -103,23 +103,20 @@
   }
   .hero-content{
     position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;
-    width:100%;max-width:600px;padding-left:clamp(24px, 7vw, 96px);padding-right:32px;box-sizing:border-box;
+    width:100%;max-width:640px;padding-left:clamp(48px, 11vw, 150px);padding-right:32px;box-sizing:border-box;
   }
   .hero-content > *{opacity:0;animation:heroUp .9s cubic-bezier(.16,.84,.44,1) forwards;}
   .hero-content > *:nth-child(1){animation-delay:.05s;}
-  .hero-content > *:nth-child(2){animation-delay:.4s;}
-  .hero-content > *:nth-child(3){animation-delay:.55s;}
-  .hero-content > *:nth-child(4){animation-delay:.72s;}
-  .hero-content > *:nth-child(5){animation-delay:.88s;}
-  .hero-content > *:nth-child(6){animation-delay:1.04s;}
+  .hero-content > *:nth-child(2){animation-delay:.3s;}
+  .hero-content > *:nth-child(3){animation-delay:.5s;}
+  .hero-content > *:nth-child(4){animation-delay:.68s;}
+  .hero-content > *:nth-child(5){animation-delay:.85s;}
+  .hero-content > *:nth-child(6){animation-delay:1.02s;}
   @keyframes heroUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-  .hero-logo-card{
-    background:rgba(253,246,245,.92);backdrop-filter:blur(6px);
-    border-radius:50%;width:130px;height:130px;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 24px 48px -14px rgba(0,0,0,.5);margin-bottom:26px;flex-shrink:0;
+  .hero-wordmark{
+    font-family:var(--font-script);font-weight:400;font-size:clamp(3.2rem, 7vw, 5.6rem);
+    line-height:1;color:var(--paper);margin-bottom:14px;
   }
-  .hero-logo-card img{width:90px;height:auto;animation:bob 6s ease-in-out infinite;}
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
   .eyebrow{
     display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:600;
     letter-spacing:.16em;text-transform:uppercase;color:var(--clay-light);margin-bottom:16px;
@@ -225,10 +222,11 @@
   .trust .tag{color:var(--clay-light);}
   .trust h2{color:var(--paper);}
   .trust p.lede{color:rgba(246,241,232,.78);margin-top:20px;font-size:1.05rem;line-height:1.65;max-width:460px;}
-  .trust-stats{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-  .trust-stat{border:1px solid rgba(246,241,232,.18);padding:30px 26px;border-radius:3px;}
-  .trust-stat .num{font-family:var(--font-display);font-size:2.4rem;color:var(--clay-light);}
-  .trust-stat .lbl{font-size:.8rem;color:rgba(246,241,232,.65);margin-top:6px;letter-spacing:.02em;}
+  .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .review-card{border:1px solid rgba(246,241,232,.18);padding:26px 24px;border-radius:3px;}
+  .review-card .stars{color:var(--clay-light);font-size:.85rem;letter-spacing:.1em;margin-bottom:12px;}
+  .review-card p{font-family:var(--font-display);font-style:italic;font-size:1.05rem;line-height:1.4;color:var(--paper);}
+  .review-card .who{margin-top:14px;font-size:.78rem;color:rgba(246,241,232,.55);letter-spacing:.02em;}
   .trust a.btn{margin-top:34px;}
 
   /* ---------- visit ---------- */
@@ -277,14 +275,13 @@
     .g1,.g7{grid-column:span 2;}
   }
   @media (max-width:680px){
-    .hero-content{padding-left:24px;padding-right:24px;max-width:100%;}
+    .hero-content{padding-left:28px;padding-right:28px;max-width:100%;}
   }
   @media (max-width:560px){
     .wrap{padding:0 20px;}
     section{padding:64px 0;}
     .hero{padding:130px 0 70px;}
-    .hero-logo-card{width:104px;height:104px;margin-bottom:20px;}
-    .hero-logo-card img{width:72px;}
+    .hero-wordmark{font-size:3rem;margin-bottom:10px;}
     .hero p.lede{max-width:100%;}
     .hero-cta{margin-top:26px;}
     .hero-cta .btn{width:100%;text-align:center;justify-content:center;}
@@ -327,7 +324,7 @@
 <section class="hero" id="top">
   <div class="hero-bg"><img src="images/hero-eye.jpg" alt="Close up of full lash extension set, Maples Beauty &amp; Education, Hebburn"></div>
   <div class="hero-content">
-    <div class="hero-logo-card"><img src="images/logo-icon.png" alt="Maples Beauty &amp; Education"></div>
+    <div class="hero-wordmark">Maples</div>
     <div class="eyebrow">Hebburn · Tyne &amp; Wear</div>
     <h1>Lashes &amp; brows,<br><em>made to last.</em></h1>
     <p class="lede">A private home studio in Hebburn, run by Faye — lash extensions, lifts, brow treatments, facials and skin work, all in one place.</p>
@@ -374,7 +371,7 @@
     <div class="section-head reveal">
       <div class="tag">Treatments</div>
       <h2>Lash &amp; brow <em>menu</em></h2>
-      <p>The core lash and brow treatments, priced and timed exactly as booked on Fresha. Full treatment list and live availability always up to date there.</p>
+      <p>A few of the studio's most-booked lash and brow treatments, with honest pricing for every visit.</p>
     </div>
     <div class="service-grid reveal">
       <div class="service-card">
@@ -429,16 +426,32 @@
 <section class="trust">
   <div class="wrap">
     <div class="reveal">
-      <div class="tag">Why Hebburn trusts Maples</div>
-      <h2>325+ bookings.<br>One five-star average.</h2>
-      <p class="lede">Every appointment is booked, confirmed and reviewed through Fresha — so the rating below is verified, not curated. No filtered photos, no fake reviews, just the same studio every time.</p>
-      <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" class="btn" style="background:var(--clay);color:var(--forest);">See verified reviews on Fresha</a>
+      <div class="tag">What clients say</div>
+      <h2>5.0 stars,<br>booking after booking.</h2>
+      <p class="lede">A few of the most recent appointments — real ratings, nothing curated.</p>
+      <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" class="btn" style="background:var(--clay);color:var(--forest);">Read more reviews</a>
     </div>
-    <div class="trust-stats reveal">
-      <div class="trust-stat"><div class="num" data-count="5" data-decimals="1">0.0</div><div class="lbl">Average rating</div></div>
-      <div class="trust-stat"><div class="num" data-count="325" data-suffix="+">0</div><div class="lbl">Verified reviews</div></div>
-      <div class="trust-stat"><div class="num" data-count="9">0</div><div class="lbl">Years lashing full-time</div></div>
-      <div class="trust-stat"><div class="num" data-count="5">0</div><div class="lbl">Days a week, open</div></div>
+    <div class="review-grid reveal">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>"Great job as always 👏🏻"</p>
+        <div class="who">Donna D · May 2026</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Verified 5-star booking</p>
+        <div class="who">Jayne J · Jun 2026</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Verified 5-star booking</p>
+        <div class="who">Natalie K · Jun 2026</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Verified 5-star booking</p>
+        <div class="who">Claire M · Jun 2026</div>
+      </div>
     </div>
   </div>
 </section>
@@ -480,7 +493,7 @@
     <div class="footer-top">
       <div>
         <a href="#top" class="logo on-dark"><img src="images/logo-icon.png" alt="Maples Beauty &amp; Education logo"></a>
-        <p style="margin-top:16px;max-width:280px;font-size:.9rem;line-height:1.6;">A home lash &amp; brow studio in Hebburn, Tyne and Wear, run by Faye. Booking handled entirely through Fresha.</p>
+        <p style="margin-top:16px;max-width:280px;font-size:.9rem;line-height:1.6;">A home lash &amp; brow studio in Hebburn, Tyne and Wear, run by Faye.</p>
         <div class="social-row">
           <a href="https://www.fresha.com/en-GB/a/maples-beauty-education-hebburn-tyne-and-wear-4-saint-close-fenzbh6h" target="_blank" rel="noopener" aria-label="Fresha">F</a>
           <a href="https://www.facebook.com/people/Maples-Beauty-Education/61568768131959/" target="_blank" rel="noopener" aria-label="Facebook" style="font-size:.72rem;font-weight:700;">FB</a>
@@ -509,7 +522,6 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Maples Beauty &amp; Education, Hebburn.</span>
-      <span>Bookings via Fresha.</span>
     </div>
   </div>
 </footer>
